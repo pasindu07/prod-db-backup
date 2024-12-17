@@ -13,3 +13,15 @@ NEW_BACKUP_DIR="$BACKUP_DIR/backup_$DATE"
 OLD_BACKUP_DIR=$(ls $BACKUP_DIR)
 LOG_FILE="$BACKUP_DIR/backup_$DATE.log"
 
+# Source external scripts
+source ./abort_backup.sh
+source ./backup_process.sh
+
+# Check if backup directory exists
+if [[ ! -d "$BACKUP_DIR" ]]; then
+    echo "Error: Backup directory $BACKUP_DIR does not exist." | tee -a "$LOG_FILE"
+    abort_backup "Backup directory $BACKUP_DIR does not exist."
+    exit 1
+fi
+
+backup_process
