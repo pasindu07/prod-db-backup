@@ -23,7 +23,7 @@ backup_process() {
     # Backup each database
     for DB in $DBS; do
         echo "Backing up database: $DB" | tee -a "$LOG_FILE"
-        mysqldump -h "$HOST" -P "$PORT" -u "$USER" -p"$PASSWORD" "$DB" --triggers --routines --hex-blob | gzip > "$NEW_BACKUP_DIR/${DB}.sql.gz"
+        mysqldump -h "$HOST" -P "$PORT" -u "$USER" -p"$PASSWORD" "$DB" --triggers --routines --events --hex-blob | gzip > "$NEW_BACKUP_DIR/${DB}.sql.gz"
         if [[ $? -ne 0 ]]; then
             echo "Error backing up database: $DB" | tee -a "$LOG_FILE"
             abort_backup "Error occurred while backing up database: $DB."
