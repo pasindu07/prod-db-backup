@@ -13,7 +13,7 @@ backup_process() {
     echo "Created new backup directory: $NEW_BACKUP_DIR" | tee -a "$LOG_FILE"
 
     # Get list of databases starting with 'prod_' and include 'mysql'
-    DBS=$(mysql -h "$HOST" -P "$PORT" -u "$USER" -p"$PASSWORD" -e "SHOW DATABASES;" | grep -E '^prod_' -e '^mysql')
+    DBS=$(mysql -h "$HOST" -P "$PORT" -u "$USER" -p"$PASSWORD" -e "SHOW DATABASES;" | grep -E '^prod_')
 
     if [[ -z "$DBS" ]]; then
         echo "No databases found with prefix 'prod_' or 'mysql'." | tee -a "$LOG_FILE"
