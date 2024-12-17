@@ -24,4 +24,6 @@ if [[ ! -d "$BACKUP_DIR" ]]; then
     exit 1
 fi
 
+if [[ ! -d $NEW_BACKUP_DIR ]]; then
 backup_process
+fi
