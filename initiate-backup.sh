@@ -10,8 +10,8 @@ EMAIL_RECIPIENT="techops@orangehrm.com"
 DATE=$(date +"%d%m%Y")          
 YESTERDAY=$(date -d "yesterday" +"%d%m%Y")
 NEW_BACKUP_DIR="$BACKUP_DIR/backup_$DATE"
-OLD_BACKUP_DIR=$(ls $BACKUP_DIR)
-LOG_FILE="$BACKUP_DIR/backup_$DATE.log"
+OLD_BACKUP_DIR=$(find $BACKUP_DIR -type d -name 'backup_*')
+LOG_FILE="$BACKUP_DIR/log/backup_$DATE.log"
 
 # Source external scripts
 source ./abort_backup.sh
