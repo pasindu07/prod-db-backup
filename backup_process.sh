@@ -31,11 +31,11 @@ backup_process() {
     done
 
     # Backup mysql database 
-    echo "Backing up database: $DB" | tee -a "$LOG_FILE"
-    mysqldump -h "$HOST" -P "$PORT" -u "$USER" -p"$PASSWORD" "$DB" | gzip > "$NEW_BACKUP_DIR/mysql.sql.gz"
+    echo "Backing up database: mysql" | tee -a "$LOG_FILE"
+    mysqldump -h "$HOST" -P "$PORT" -u "$USER" -p"$PASSWORD" "mysql" | gzip > "$NEW_BACKUP_DIR/mysql.sql.gz"
     if [[ $? -ne 0 ]]; then
-        echo "Error backing up database: $DB" | tee -a "$LOG_FILE"
-        abort_backup "Error occurred while backing up database: $DB."
+        echo "Error backing up database: mysql" | tee -a "$LOG_FILE"
+        abort_backup "Error occurred while backing up database: mysql."
     fi
 
     echo "Backup completed successfully for all databases." | tee -a "$LOG_FILE"
