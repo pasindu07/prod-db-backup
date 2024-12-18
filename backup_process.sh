@@ -16,7 +16,7 @@ backup_process() {
     DBS=$(mysql -h "$HOST" -P "$PORT" -u "$USER" -p"$PASSWORD" -e "SHOW DATABASES;" | grep -E '^prod_')
 
     if [[ -z "$DBS" ]]; then
-        echo "No databases found with prefix 'prod_' or 'mysql'." | tee -a "$LOG_FILE"
+        echo "No databases found with prefix 'prod_'" | tee -a "$LOG_FILE"
         abort_backup "No relevant databases found for backup."
     fi
 
