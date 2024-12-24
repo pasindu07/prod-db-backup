@@ -19,7 +19,7 @@ source ./abort_backup.sh
 source ./backup_process.sh
 
 #Logging the timestmap
-echo "\n$(date '+%Y-%m-%d %H:%M:%S') - Backup Started" >> $LOG_FILE
+echo "$(date '+%Y-%m-%d %H:%M:%S') - Backup Started" >> $LOG_FILE
 
 # Check if backup directory exists
 if [[ ! -d "$BACKUP_DIR" ]]; then
