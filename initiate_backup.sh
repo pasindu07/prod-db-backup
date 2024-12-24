@@ -18,6 +18,9 @@ LOG_FILE="$BACKUP_DIR/log/backup_$DATE.log"
 source ./abort_backup.sh
 source ./backup_process.sh
 
+#Logging the timestmap
+echo "\n$(date '+%Y-%m-%d %H:%M:%S') - Backup Started" >> $LOG_FILE
+
 # Check if backup directory exists
 if [[ ! -d "$BACKUP_DIR" ]]; then
     echo "Error: Backup directory $BACKUP_DIR does not exist." | tee -a "$LOG_FILE"
